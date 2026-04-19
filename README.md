@@ -1,5 +1,5 @@
-# Marketing OS - Framework de Marketing para PMEs
-> **Status:** Iteração 50 (Self-Evolution Loop) | **Score de Maturidade:** 58 Artefatos Core
+# Marketing OS (MKTG-OS)
+> **Status:** Iteração 101 (Ciclo 2: Ocupação Noctua) | Templates: 106
 
 Repositório operacional de alta performance para agências e consultores que atendem PMEs, estruturado para escalar via "Marketing as Code".
 
@@ -11,7 +11,7 @@ Repositório operacional de alta performance para agências e consultores que at
 5. **Fase 5: Escala** → Lançamentos, Webinars, Podcasts e Automação Agêntica.
 
 ## 📂 Estrutura de Artefatos (Templates)
-O sistema conta com **58 templates mestres** em `docs/templates/`, divididos em:
+O sistema conta com **106 templates mestres** em `docs/templates/`, divididos em:
 - **Briefings de Fundação:** Persona, Arquétipos, SWOT, SMART, Concorrência.
 - **Briefings de Canal:** Instagram, LinkedIn, Google Meu Negócio, YouTube.
 - **Briefings Técnicos:** Auditoria de Site, Google Ads, Meta Ads, GA4.
