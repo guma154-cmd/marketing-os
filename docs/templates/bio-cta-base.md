@@ -4,9 +4,10 @@
 
 ---
 
-## 1. Identificação e Estratégia
 *   **Cliente:**
 *   **Nicho/Segmento:**
+*   **Área de Atuação/Localização:** (Crucial para SEO Local)
+*   **Objetivo Estratégico da Bio:** ( ) Venda Direta | ( ) Autoridade/Confiança | ( ) Crescimento de Perfil
 *   **Oferta Principal:** (Baseada no Diagnóstico)
 *   **Diferencial de Autoridade:** (Baseado no Diagnóstico)
 
@@ -46,10 +47,13 @@
 
 ## 4. Fluxo de Contato (WhatsApp)
 
-### 4.1. Link na Bio
+### 4.1. Link na Bio (Principal)
 *   **URL com Tag:** `https://wa.me/55[numero]?text=[Mensagem_Codificada]`
 
-### 4.2. Mensagens de Entrada (Welcome)
+### 4.2. Link Secundário (Opcional - Linktree/Site)
+*   **URL:** 
+
+### 4.3. Mensagens de Entrada (Welcome)
 *   **Opção 1 (Geral):** "Olá! Vi seu perfil no Instagram e gostaria de mais informações sobre [Serviço]."
 *   **Opção 2 (Direta):** "Olá! Gostaria de agendar uma avaliação para [Data/Hora]."
 *   **Opção 3 (Orçamento):** "Olá! Pode me enviar a tabela de valores para [Serviço]?"
@@ -76,7 +80,8 @@
 
 ## 7. Checklist de Implementação
 - [ ] Foto de perfil clara (olhando para a câmera, fundo limpo).
-- [ ] Nome do perfil atualizado com palavra-chave.
+- [ ] Nome do perfil atualizado com [Palavra-chave + Nome].
 - [ ] Bio atualizada com as 3 linhas estratégicas.
-- [ ] Link do WhatsApp testado e com mensagem correta.
+- [ ] Link do WhatsApp testado e com mensagem de entrada correta.
+- [ ] Destaques organizados (mínimo: Comece Aqui + Resultados).
 - [ ] Capas de destaques padronizadas e legíveis.
