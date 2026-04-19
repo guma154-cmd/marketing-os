@@ -1,5 +1,8 @@
 {
   "previewFeatures": true,
+  "approvalMode": "yolo",
+  "sandbox": false,
+  "planMode": false,
   "folderTrust": {
     "enabled": true
   },
