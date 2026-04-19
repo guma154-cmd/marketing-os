@@ -1,87 +1,37 @@
-# Gemini Rules - Synkra AIOX
+# Gemini Rules - Marketing OS
 
-Este arquivo define as instrucoes do projeto para Gemini CLI neste repositorio.
+Este arquivo define as instruções do projeto para o Gemini CLI neste repositório.
 
-<!-- AIOX-MANAGED-START: core -->
-## Core Rules
+## Regras Core
 
-1. Siga a Constitution em `.aiox-core/constitution.md`
-2. Priorize `CLI First -> Observability Second -> UI Third`
-3. Trabalhe por stories em `docs/stories/`
-4. Nao invente requisitos fora dos artefatos existentes
-<!-- AIOX-MANAGED-END: core -->
+1. **Domínio de Marketing:** Siga as diretrizes do método Marketing OS descritas em `GEMINI.md`.
+2. **Prioridade de Domínio:** Priorize `Confiança -> Clareza -> Conversão`.
+3. **Vocabulário:** Use terminologia de marketing (leads, conversão, autoridade). **NUNCA** use terminologia de engenharia de software (stories, sprints, backlog, etc.).
+4. **Respeito aos Dados:** NUNCA altere ou delete dados de clientes em `casos/` sem instrução explícita.
 
-<!-- AIOX-MANAGED-START: quality -->
-## Quality Gates
+## Quality Gates de Marketing
 
-- Rode `npm run lint`
-- Rode `npm run typecheck`
-- Rode `npm test`
-- Atualize checklist e file list da story antes de concluir
-<!-- AIOX-MANAGED-END: quality -->
+- Valide a **Regra Megahair** antes de sugerir ou configurar tráfego pago.
+- Garanta que toda entrega de Bio responda: *O que faz? Para quem? Por que eu?*
+- Verifique se o Link de contato está funcional e leva a uma mensagem de entrada clara.
+- Certifique-se de que há prova social visível antes de avançar para a Fase 5 (Escala).
 
-<!-- AIOX-MANAGED-START: codebase -->
-## Project Map
+## Agent Skills
 
-- Core framework: `.aiox-core/`
-- CLI entrypoints: `bin/`
-- Shared packages: `packages/`
-- Tests: `tests/`
-- Docs: `docs/`
-<!-- AIOX-MANAGED-END: codebase -->
+O projeto utiliza a arquitetura de **Agent Skills**.
+- As habilidades estão localizadas em `.gemini/skills/`.
+- Cada skill possui um `SKILL.md` com instruções de ativação e execução.
+- Utilize as skills conforme a necessidade da fase atual do cliente.
 
-<!-- AIOX-MANAGED-START: gemini-integration -->
-## Gemini Integration
+## Estrutura do Projeto
 
-Fonte de verdade de agentes:
-- Canonico: `.aiox-core/development/agents/*.md`
-- Espelhado para Gemini: `.gemini/rules/AIOX/agents/*.md`
+- `casos/`: Histórico e trilhas de clientes.
+- `templates/`: Modelos base para artefatos.
+- `criterios/`: Regras de passagem de fase e bloqueio.
+- `.gemini/skills/`: Habilidades especializadas do agente.
 
-Hooks e settings:
-- Hooks locais: `.gemini/hooks/`
-- Settings locais: `.gemini/settings.json`
+## Comandos Recomendados
 
-Sempre que houver drift, execute:
-- `npm run sync:ide:gemini`
-- `npm run validate:gemini-sync`
-- `npm run validate:gemini-integration`
-<!-- AIOX-MANAGED-END: gemini-integration -->
-
-<!-- AIOX-MANAGED-START: parity -->
-## Multi-IDE Parity
-
-Para garantir paridade entre Claude Code, Codex e Gemini:
-- `npm run validate:parity`
-- `npm run validate:paths`
-<!-- AIOX-MANAGED-END: parity -->
-
-<!-- AIOX-MANAGED-START: activation -->
-## Agent Activation
-
-Preferencia de ativacao:
-1. Use agentes em `.gemini/rules/AIOX/agents/`
-2. Se necessario, use fonte canonica em `.aiox-core/development/agents/`
-
-Ao ativar agente:
-- carregar definicao completa do agente
-- renderizar greeting via `node .aiox-core/development/scripts/generate-greeting.js <agent-id>`
-- manter persona ativa ate `*exit`
-
-Atalhos recomendados no Gemini:
-- `/aiox-menu` para listar agentes
-- `/aiox-<agent-id>` (ex.: `/aiox-dev`, `/aiox-architect`)
-- `/aiox-agent <agent-id>` para launcher generico
-<!-- AIOX-MANAGED-END: activation -->
-
-<!-- AIOX-MANAGED-START: commands -->
-## Common Commands
-
-- `npm run sync:ide`
-- `npm run sync:ide:check`
-- `npm run sync:ide:gemini`
-- `npm run validate:gemini-sync`
-- `npm run validate:gemini-integration`
-- `npm run validate:parity`
-- `npm run validate:structure`
-- `npm run validate:agents`
-<!-- AIOX-MANAGED-END: commands -->
+- Use as skills ativando-as por nome ou contexto.
+- Consulte `GEMINI.md` para entender as fases e artefatos.
+- Consulte `criterios/` antes de cada entrega importante.
