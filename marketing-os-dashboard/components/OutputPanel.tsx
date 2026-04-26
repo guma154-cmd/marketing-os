@@ -102,7 +102,7 @@ export function OutputPanel({ conteudo, setConteudo, status, isGenerating, onGen
           </div>
         )}
 
-        {isGenerating && (
+        {isGenerating && !conteudo && (
           <div className="absolute inset-0 flex items-center justify-center bg-zinc-950/80 backdrop-blur-sm z-10">
             <div className="text-amber-500 flex flex-col items-center">
               <span className="animate-spin text-4xl mb-4">✦</span>

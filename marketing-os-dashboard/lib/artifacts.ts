@@ -150,41 +150,41 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'resumo_negocio', 
-        label: 'O que a empresa faz (resumo)', 
-        tipo: 'textarea', 
+      {
+        nome: 'resumo_negocio',
+        label: 'O que a empresa faz (resumo)',
+        tipo: 'textarea',
         obrigatorio: true,
         placeholder: 'Empresa de segurança eletrônica premium para condomínios residenciais em SP, diferenciada pelo monitoramento 24h com resposta em menos de 5 minutos'
       },
-      { 
-        nome: 'diferenciais', 
-        label: 'Principais diferenciais', 
-        tipo: 'textarea', 
+      {
+        nome: 'diferenciais',
+        label: 'Principais diferenciais',
+        tipo: 'textarea',
         placeholder: 'Tempo de resposta de 5min, técnicos próprios (sem terceirização), contrato sem fidelidade, app de monitoramento próprio',
-        ajuda: 'O que o cliente faz que o concorrente vizinho não faz? (Ex: Atendimento em 15min, garantia estendida, material importado).' 
+        ajuda: 'O que o cliente faz que o concorrente vizinho não faz? (Ex: Atendimento em 15min, garantia estendida, material importado).'
       },
-      { 
-        nome: 'cliente_ideal', 
-        label: 'Cliente Ideal', 
+      {
+        nome: 'cliente_ideal',
+        label: 'Cliente Ideal',
         tipo: 'textarea',
         placeholder: 'Síndicos e administradoras de condomínios de médio e alto padrão, 35-55 anos, que já tiveram problemas com segurança ou querem prevenir'
       },
-      { 
-        nome: 'problema_resolvido', 
-        label: 'Problema que resolve', 
+      {
+        nome: 'problema_resolvido',
+        label: 'Problema que resolve',
         tipo: 'textarea',
         placeholder: 'Insegurança em áreas comuns, demora no atendimento técnico, falta de controle sobre quem entra e sai'
       },
-      { 
-        nome: 'servico_principal', 
-        label: 'Serviço Principal', 
+      {
+        nome: 'servico_principal',
+        label: 'Serviço Principal',
         tipo: 'text',
         placeholder: 'Monitoramento Remoto e Portaria Virtual'
       },
-      { 
-        nome: 'objetivo_30d', 
-        label: 'Objetivo Principal (30 dias)', 
+      {
+        nome: 'objetivo_30d',
+        label: 'Objetivo Principal (30 dias)',
         tipo: 'textarea',
         placeholder: 'Aumentar o número de orçamentos qualificados vindos do Google em 20%'
       },
@@ -234,16 +234,16 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'resumo_negocio', 
-        label: 'O que a empresa faz', 
-        tipo: 'textarea', 
+      {
+        nome: 'resumo_negocio',
+        label: 'O que a empresa faz',
+        tipo: 'textarea',
         obrigatorio: true,
         placeholder: 'Barbearia clássica focada em atendimento sem hora marcada para o público masculino do bairro'
       },
-      { 
-        nome: 'servico_principal', 
-        label: 'Serviço Principal', 
+      {
+        nome: 'servico_principal',
+        label: 'Serviço Principal',
         tipo: 'text',
         placeholder: 'Corte de cabelo e barba'
       }
@@ -269,30 +269,30 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'cenario_atual', 
-        label: 'Resumo do Cenário Atual', 
+      {
+        nome: 'cenario_atual',
+        label: 'Resumo do Cenário Atual',
         tipo: 'textarea',
         placeholder: 'O cliente posta esporadicamente, não tem link de contato funcional e a bio não explica o serviço principal.'
       },
-      { 
-        nome: 'dores_visiveis', 
-        label: 'Dores Visíveis', 
+      {
+        nome: 'dores_visiveis',
+        label: 'Dores Visíveis',
         tipo: 'textarea',
         placeholder: 'Link da bio quebrado, Google Meu Negócio sem fotos, site sem SSL, WhatsApp Business não configurado'
       },
-      { 
-        nome: 'dores_ocultas', 
-        label: 'Dores Ocultas (Gargalos)', 
+      {
+        nome: 'dores_ocultas',
+        label: 'Dores Ocultas (Gargalos)',
         tipo: 'textarea',
         placeholder: 'Foto de perfil com baixa resolução, feed sem identidade visual, stories com fontes inconsistentes, sem destaque de produtos/serviços'
       },
-      { 
-        nome: 'risco_midia', 
-        label: 'Risco de Mídia Paga (Bloqueio?)', 
-        tipo: 'select', 
-        opcoes: ['NÃO', 'SIM'], 
-        ajuda: 'Selecione SIM se o perfil for amador: bio confusa, sem link de WhatsApp, sem depoimentos ou se o último post tiver mais de 15 dias.' 
+      {
+        nome: 'risco_midia',
+        label: 'Risco de Mídia Paga (Bloqueio?)',
+        tipo: 'select',
+        opcoes: ['NÃO', 'SIM'],
+        ajuda: 'Selecione SIM se o perfil for amador: bio confusa, sem link de WhatsApp, sem depoimentos ou se o último post tiver mais de 15 dias.'
       }
     ]
   },
@@ -324,27 +324,27 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
         opcoes: ['Presença Essencial', 'Presença + Captação', 'Growth Local'],
         ajuda: 'Presença Essencial = base comprometida (bloqueio ativo). Presença + Captação = base razoável sem conversão. Growth Local = base sólida, foco em escala.'
       },
-      { 
-        nome: 'produto_recomendado_nome', 
-        label: 'Nome Personalizado do Pacote/Produto', 
+      {
+        nome: 'produto_recomendado_nome',
+        label: 'Nome Personalizado do Pacote/Produto',
         tipo: 'text',
         placeholder: 'Marketing OS - Presença + Captação'
       },
-      { 
-        nome: 'escopo_inicial', 
-        label: 'Escopo Inicial (30 dias)', 
+      {
+        nome: 'escopo_inicial',
+        label: 'Escopo Inicial (30 dias)',
         tipo: 'textarea',
         placeholder: 'Gestão completa do Instagram (4 posts/semana), criação de 2 reels/mês, relatório quinzenal de métricas, otimização do Google Meu Negócio, bio e destaques'
       },
-      { 
-        nome: 'investimento_fee', 
-        label: 'Investimento Mensal (Fee)', 
+      {
+        nome: 'investimento_fee',
+        label: 'Investimento Mensal (Fee)',
         tipo: 'text',
         placeholder: 'R$ 2.500,00/mês'
       },
-      { 
-        nome: 'investimento_midia', 
-        label: 'Verba de Mídia Sugerida', 
+      {
+        nome: 'investimento_midia',
+        label: 'Verba de Mídia Sugerida',
         tipo: 'text',
         placeholder: 'Mínimo de R$ 1.000,00/mês direto nas plataformas'
       }
@@ -369,15 +369,15 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'data_inicio', 
-        label: 'Data de Início', 
+      {
+        nome: 'data_inicio',
+        label: 'Data de Início',
         tipo: 'text',
         placeholder: '01/05/2026'
       },
-      { 
-        nome: 'responsabilidades_cliente', 
-        label: 'Responsabilidades do Cliente', 
+      {
+        nome: 'responsabilidades_cliente',
+        label: 'Responsabilidades do Cliente',
         tipo: 'textarea',
         placeholder: 'Aprovar posts em até 24h, enviar fotos de novos produtos toda segunda, manter saldo no cartão do Meta Ads'
       },
@@ -421,15 +421,15 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'acoes_prioritarias', 
-        label: 'Ações Prioritárias', 
+      {
+        nome: 'acoes_prioritarias',
+        label: 'Ações Prioritárias',
         tipo: 'textarea',
         placeholder: 'Seg: corrigir link da bio + configurar WhatsApp Business. Ter: criar 3 destaques (Quem Somos, Serviços, Contato). Qua-Sex: publicar posts 1, 2 e 3 do calendário'
       },
-      { 
-        nome: 'blockers', 
-        label: 'Possíveis Blockers', 
+      {
+        nome: 'blockers',
+        label: 'Possíveis Blockers',
         tipo: 'textarea',
         placeholder: 'Cliente pode demorar para enviar acesso ao Meta Business Suite — solicitar até segunda-feira no máximo'
       }
@@ -454,15 +454,15 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'metricas_chave', 
-        label: 'Métricas Chave (Leads, Cliques, etc)', 
+      {
+        nome: 'metricas_chave',
+        label: 'Métricas Chave (Leads, Cliques, etc)',
         tipo: 'textarea',
         placeholder: 'Número de leads via WhatsApp, novos seguidores qualificados, alcance de perfis não seguidores'
       },
-      { 
-        nome: 'resultados_periodo', 
-        label: 'Resultados do Período', 
+      {
+        nome: 'resultados_periodo',
+        label: 'Resultados do Período',
         tipo: 'textarea',
         placeholder: '45 leads novos (aumento de 30%), 3 contratos fechados via Instagram, custo por lead de R$ 12,00'
       }
@@ -487,21 +487,21 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'funcionou', 
-        label: 'O que funcionou', 
+      {
+        nome: 'funcionou',
+        label: 'O que funcionou',
         tipo: 'textarea',
         placeholder: 'Stories com depoimentos em vídeo converteram 3x mais que imagens estáticas'
       },
-      { 
-        nome: 'nao_funcionou', 
-        label: 'O que não funcionou', 
+      {
+        nome: 'nao_funcionou',
+        label: 'O que não funcionou',
         tipo: 'textarea',
         placeholder: 'Postagens técnicas demais no feed tiveram baixo engajamento e pouca tração'
       },
-      { 
-        nome: 'aprendizados', 
-        label: 'Aprendizados', 
+      {
+        nome: 'aprendizados',
+        label: 'Aprendizados',
         tipo: 'textarea',
         placeholder: 'O público prefere ver o "bastidor" e a equipe do que apenas o produto final'
       }
@@ -526,9 +526,9 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'melhorias_processo', 
-        label: 'Melhorias no Processo', 
+      {
+        nome: 'melhorias_processo',
+        label: 'Melhorias no Processo',
         tipo: 'textarea',
         placeholder: 'Implementar o CRM Pipedrive para não perder leads no WhatsApp, criar template de design fixo para carrosséis'
       }
@@ -553,15 +553,15 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'status_auditoria', 
-        label: 'Status da Auditoria', 
-        tipo: 'select', 
-        opcoes: ['Aprovada', 'Reprovada'] 
+      {
+        nome: 'status_auditoria',
+        label: 'Status da Auditoria',
+        tipo: 'select',
+        opcoes: ['Aprovada', 'Reprovada']
       },
-      { 
-        nome: 'pontos_atencao', 
-        label: 'Pontos de Atenção', 
+      {
+        nome: 'pontos_atencao',
+        label: 'Pontos de Atenção',
         tipo: 'textarea',
         placeholder: 'Pixel do Facebook ainda não está capturando eventos de "Compra", Google Tag Manager precisa de revisão'
       }
@@ -586,27 +586,27 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'objetivo_campanha', 
-        label: 'Objetivo da Campanha', 
+      {
+        nome: 'objetivo_campanha',
+        label: 'Objetivo da Campanha',
         tipo: 'text',
         placeholder: 'Conversão para WhatsApp (Vendas Diretas)'
       },
-      { 
-        nome: 'orcamento', 
-        label: 'Orçamento', 
+      {
+        nome: 'orcamento',
+        label: 'Orçamento',
         tipo: 'text',
         placeholder: 'R$ 50,00 por dia (Total R$ 1.500,00/mês)'
       },
-      { 
-        nome: 'canal', 
-        label: 'Canal', 
-        tipo: 'select', 
-        opcoes: ['Meta', 'Google', 'Ambos'] 
+      {
+        nome: 'canal',
+        label: 'Canal',
+        tipo: 'select',
+        opcoes: ['Meta', 'Google', 'Ambos']
       },
-      { 
-        nome: 'publico', 
-        label: 'Público Alvo', 
+      {
+        nome: 'publico',
+        label: 'Público Alvo',
         tipo: 'textarea',
         placeholder: 'Raio de 5km da loja, mulheres 25-45 anos, interessadas em estética e bem-estar'
       }
@@ -631,21 +631,21 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'formato', 
-        label: 'Formatos', 
+      {
+        nome: 'formato',
+        label: 'Formatos',
         tipo: 'text',
         placeholder: '1 Vídeo Reels + 2 Imagens Estáticas para Feed'
       },
-      { 
-        nome: 'mensagem_principal', 
-        label: 'Mensagem Principal', 
+      {
+        nome: 'mensagem_principal',
+        label: 'Mensagem Principal',
         tipo: 'textarea',
         placeholder: 'Mostre a transformação do serviço em 15 segundos com um gancho de curiosidade no início'
       },
-      { 
-        nome: 'cta', 
-        label: 'Call to Action', 
+      {
+        nome: 'cta',
+        label: 'Call to Action',
         tipo: 'text',
         placeholder: 'Clique no botão e agende sua avaliação gratuita'
       }
