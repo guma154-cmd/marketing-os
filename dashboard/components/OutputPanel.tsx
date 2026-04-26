@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { PlayCircle, Check, Presentation, Edit3, X } from 'lucide-react';
+import { PlayCircle, Check, Presentation, Edit3, X, RefreshCw } from 'lucide-react';
 
 const MDEditor = dynamic(
   () => import('@uiw/react-md-editor').then((mod) => mod.default),
@@ -26,6 +26,14 @@ interface Props {
 export function OutputPanel({ conteudo, setConteudo, status, isGenerating, onGenerate, onApprove, onSaveEdit }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [showPresentation, setShowPresentation] = useState(false);
+
+  const handleRegenerate = () => {
+    if (status === 'aprovado') {
+      const confirm = window.confirm("Este artefato já foi aprovado. Deseja gerar uma nova versão?\nO conteúdo atual será substituído.");
+      if (!confirm) return;
+    }
+    onGenerate();
+  };
 
   if (showPresentation) {
     return (
@@ -55,6 +63,13 @@ export function OutputPanel({ conteudo, setConteudo, status, isGenerating, onGen
         <div className="flex gap-2">
           {!isEditing && conteudo && (
             <>
+              <button 
+                onClick={handleRegenerate}
+                disabled={isGenerating}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-700 text-zinc-400 hover:text-zinc-300 hover:border-zinc-500 transition-all text-xs font-bold disabled:opacity-50"
+              >
+                <RefreshCw size={14} className={isGenerating ? "animate-spin" : ""} /> Gerar Novamente
+              </button>
               <button 
                 onClick={() => setIsEditing(true)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-700 text-zinc-300 hover:text-white hover:bg-zinc-800 transition-all text-xs font-bold"
