@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     // Busca contexto de artefatos anteriores
-    const stmt = db.prepare('SELECT tipo, form_data FROM artefatos WHERE cliente_id = ? AND status = "aprovado"');
+    const stmt = db.prepare("SELECT tipo, form_data FROM artefatos WHERE cliente_id = ? AND status = 'aprovado'");
     const contextoBruto = stmt.all(clienteId) as { tipo: string; form_data: string }[];
     const contextoCliente = contextoBruto.map(a => ({ tipo: a.tipo, form_data: JSON.parse(a.form_data || '{}') }));
 
