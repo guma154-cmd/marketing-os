@@ -15,6 +15,12 @@ export function Sidebar() {
           Novo Cliente
         </Link>
       </nav>
+      
+      <div className="mt-auto pt-4 border-t border-zinc-900 px-4">
+        <div className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest">
+          Marketing OS v1.1.0
+        </div>
+      </div>
     </div>
   );
 }
