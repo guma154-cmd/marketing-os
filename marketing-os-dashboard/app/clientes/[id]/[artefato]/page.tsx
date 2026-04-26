@@ -86,23 +86,8 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
         if (done) break;
         const chunk = decoder.decode(value, { stream: true });
         
-        const lines = chunk.split('\n');
-        for (const line of lines) {
-          if (line.startsWith('data:')) {
-            const data = line.replace('data: ', '').trim();
-            if (data !== '[DONE]') {
-              try {
-                const parsed = JSON.parse(data);
-                if (parsed.type === 'content_block_delta') {
-                  fullText += parsed.delta.text;
-                  setConteudo(fullText);
-                }
-              } catch {
-                // Silently ignore malformed chunks
-              }
-            }
-          }
-        }
+        fullText += chunk;
+        setConteudo(fullText);
       }
       
       await salvarFormulario(fullText, 'gerado');

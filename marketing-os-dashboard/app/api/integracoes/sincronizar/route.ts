@@ -36,7 +36,7 @@ export async function POST(req: Request) {
         VALUES (?, ?, ?, ?, ?, ?, ?, 'baseline')
       `).run(snapshotId, clienteId, integracao.id, plataforma, periodo.inicio, periodo.fim, JSON.stringify(dados));
 
-      db.prepare('UPDATE integracoes SET ultima_sincronizacao = CURRENT_TIMESTAMP, status = "ativo" WHERE id = ?').run(integracao.id);
+      db.prepare("UPDATE integracoes SET ultima_sincronizacao = CURRENT_TIMESTAMP, status = 'ativo' WHERE id = ?").run(integracao.id);
 
       return NextResponse.json({ sucesso: true, snapshot: dados });
     }

@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     } 
 
     const stream = await groq.chat.completions.create({
-      model: 'llama-3.1-70b-versatile',
+      model: 'llama-3.3-70b-versatile',
       max_tokens: 2048,
       stream: true,
       messages: [{ role: 'user', content: prompt }]
