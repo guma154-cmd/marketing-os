@@ -4,7 +4,7 @@ export interface Cliente {
   segmento?: string;
   cidade?: string;
   fase_atual: number;
-  bloqueio_midia: boolean;
+  bloqueio_midia: number; // Mudado para number (0 ou 1) para bater com SQLite
   cor: string;
   criado_em: string;
   atualizado_em?: string;

@@ -8,12 +8,12 @@ export const FASES: Fase[] = [
   { numero: 5, nome: 'Escala (Growth)', descricao: 'Tráfego pago.', artefatos: ['briefing-trafego', 'briefing-criativos'] }
 ];
 
-export function canAdvancePhase(faseAtual: number, artefatosAprovados: string[], bloqueioMidia: boolean): boolean {
+export function canAdvancePhase(faseAtual: number, artefatosAprovados: string[], bloqueioMidia: number): boolean {
   if (faseAtual === 1) {
     const hasOnboarding = artefatosAprovados.includes('onboarding');
     const hasBriefing = artefatosAprovados.includes('briefing') || artefatosAprovados.includes('briefing-lite');
     const hasDiagnostico = artefatosAprovados.includes('diagnostico');
-    return hasOnboarding && hasBriefing && hasDiagnostico; // o bloqueioMidia não impede de ir pra fase 2 (estrutura), só pra 5.
+    return hasOnboarding && hasBriefing && hasDiagnostico; 
   }
   if (faseAtual === 2) {
     return artefatosAprovados.includes('proposta') && artefatosAprovados.includes('termos-aceite');
@@ -22,7 +22,7 @@ export function canAdvancePhase(faseAtual: number, artefatosAprovados: string[],
     return artefatosAprovados.includes('gestao-resultados');
   }
   if (faseAtual === 4) {
-    return artefatosAprovados.includes('retrospectiva') && artefatosAprovados.includes('hardening') && artefatosAprovados.includes('auditoria-fundacao') && !bloqueioMidia;
+    return artefatosAprovados.includes('retrospectiva') && artefatosAprovados.includes('hardening') && artefatosAprovados.includes('auditoria-fundacao') && bloqueioMidia === 0;
   }
   return false;
 }

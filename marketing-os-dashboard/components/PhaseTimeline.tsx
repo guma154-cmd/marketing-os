@@ -18,7 +18,7 @@ export function PhaseTimeline({ cliente, artefatos }: Props) {
   const aprovados = artefatos.filter(a => a.status === 'aprovado').map(a => a.tipo);
 
   const handleAdvance = async () => {
-    if (!canAdvancePhase(cliente.fase_atual, aprovados, cliente.bloqueio_midia === 1)) {
+    if (!canAdvancePhase(cliente.fase_atual, aprovados, cliente.bloqueio_midia)) {
       alert('Critérios não atingidos para avançar de fase.');
       return;
     }
@@ -53,7 +53,7 @@ export function PhaseTimeline({ cliente, artefatos }: Props) {
               {isActive && (
                 <Button 
                   onClick={handleAdvance} 
-                  disabled={!canAdvancePhase(fase.numero, aprovados, cliente.bloqueio_midia === 1)}
+                  disabled={!canAdvancePhase(fase.numero, aprovados, cliente.bloqueio_midia)}
                   variant="outline"
                   className="border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-zinc-950 bg-amber-500/10"
                 >
