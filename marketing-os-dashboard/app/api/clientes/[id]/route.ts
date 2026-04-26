@@ -7,7 +7,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
     const cliente = stmt.get(params.id);
     if (!cliente) return NextResponse.json({ error: 'Não encontrado' }, { status: 404 });
     return NextResponse.json(cliente);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao buscar cliente' }, { status: 500 });
   }
 }
@@ -31,7 +31,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     stmt.run(...values);
     
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao atualizar cliente' }, { status: 500 });
   }
 }

@@ -7,7 +7,7 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
     descricao: 'Coleta de acessos e alinhamento de expectativas.',
     fase: 1,
     campos: [
-      { nome: 'acessos_garantidos', label: 'Acessos Garantidos', tipo: 'textarea', placeholder: 'Meta Business Suite, Instagram, Google Meu Negócio, etc.' },
+      { nome: 'acessos_garantidos', label: 'Acessos Garantidos', tipo: 'textarea', placeholder: 'Meta Business Suite, Instagram, Google Meu Negócio, etc.', ajuda: 'Precisamos de: Admin da Fanpage, Acesso ao Gerenciador de Negócios (BM) e Senha do Instagram.' },
       { nome: 'canal_comunicacao', label: 'Canal de Comunicação', tipo: 'text', placeholder: 'WhatsApp / Slack / Trello' },
       { nome: 'frequencia_report', label: 'Frequência de Report', tipo: 'select', opcoes: ['Semanal', 'Quinzenal', 'Mensal'] },
       { nome: 'entregaveis', label: 'O que entregamos nesta fase', tipo: 'textarea' },
@@ -21,7 +21,7 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
     fase: 1,
     campos: [
       { nome: 'resumo_negocio', label: 'O que a empresa faz (resumo)', tipo: 'textarea', obrigatorio: true },
-      { nome: 'diferenciais', label: 'Principais diferenciais', tipo: 'textarea' },
+      { nome: 'diferenciais', label: 'Principais diferenciais', tipo: 'textarea', ajuda: 'O que o cliente faz que o concorrente vizinho não faz? (Ex: Atendimento em 15min, garantia estendida, material importado).' },
       { nome: 'cliente_ideal', label: 'Cliente Ideal', tipo: 'textarea' },
       { nome: 'problema_resolvido', label: 'Problema que resolve', tipo: 'textarea' },
       { nome: 'servico_principal', label: 'Serviço Principal', tipo: 'text' },
@@ -47,7 +47,7 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       { nome: 'cenario_atual', label: 'Resumo do Cenário Atual', tipo: 'textarea' },
       { nome: 'dores_visiveis', label: 'Dores Visíveis', tipo: 'textarea' },
       { nome: 'dores_ocultas', label: 'Dores Ocultas (Gargalos)', tipo: 'textarea' },
-      { nome: 'risco_midia', label: 'Risco de Mídia Paga (Bloqueio?)', tipo: 'select', opcoes: ['NÃO', 'SIM'] },
+      { nome: 'risco_midia', label: 'Risco de Mídia Paga (Bloqueio?)', tipo: 'select', opcoes: ['NÃO', 'SIM'], ajuda: 'Selecione SIM se o perfil for amador: bio confusa, sem link de WhatsApp, sem depoimentos ou se o último post tiver mais de 15 dias.' },
       { nome: 'produto_recomendado', label: 'Produto Recomendado', tipo: 'select', opcoes: ['Presença Essencial', 'Presença + Captação', 'Growth Local'] }
     ]
   },

@@ -6,7 +6,6 @@ import { randomUUID } from 'crypto';
 export const runtime = 'nodejs';
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 export async function POST(req: Request) {
   try {
     const { tipoArtefato, formData, clienteNome, clienteId } = await req.json();
@@ -17,7 +16,7 @@ export async function POST(req: Request) {
 
     // Busca contexto de artefatos anteriores
     const stmt = db.prepare('SELECT tipo, form_data FROM artefatos WHERE cliente_id = ? AND status = "aprovado"');
-    const contextoBruto = stmt.all(clienteId) as any[];
+    const contextoBruto = stmt.all(clienteId) as { tipo: string; form_data: string }[];
     const contextoCliente = contextoBruto.map(a => ({ tipo: a.tipo, form_data: JSON.parse(a.form_data || '{}') }));
 
     const prompt = buildPrompt(tipoArtefato, formData, clienteNome, contextoCliente);
@@ -25,7 +24,9 @@ export async function POST(req: Request) {
     // Salva historico
     try {
       db.prepare('INSERT INTO historico_geracoes (id, prompt_usado) VALUES (?, ?)').run(randomUUID(), prompt);
-    } catch(e) {} 
+    } catch {
+      // Ignora erro de log
+    } 
 
     const stream = await groq.chat.completions.create({
       model: 'llama-3.1-70b-versatile',
@@ -49,8 +50,9 @@ export async function POST(req: Request) {
       headers: { 'Content-Type': 'text/plain; charset=utf-8' }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Erro na API de geração (Groq):', error);
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    const message = error instanceof Error ? error.message : 'Erro desconhecido';
+    return new Response(JSON.stringify({ error: message }), { status: 500 });
   }
 }

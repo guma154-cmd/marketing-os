@@ -7,7 +7,7 @@ export async function GET() {
     const stmt = db.prepare('SELECT * FROM clientes ORDER BY atualizado_em DESC, criado_em DESC');
     const clientes = stmt.all();
     return NextResponse.json(clientes);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao buscar clientes' }, { status: 500 });
   }
 }
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const stmt = db.prepare('INSERT INTO clientes (id, nome, segmento, cidade, cor, atualizado_em) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
     stmt.run(id, body.nome, body.segmento, body.cidade, body.cor || '#f59e0b');
     return NextResponse.json({ id, ...body });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao criar cliente' }, { status: 500 });
   }
 }

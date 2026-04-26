@@ -23,7 +23,7 @@ export async function GET(req: Request) {
     const stmt = db.prepare(query);
     const artefatos = stmt.all(...params);
     return NextResponse.json(artefatos);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao buscar artefatos' }, { status: 500 });
   }
 }

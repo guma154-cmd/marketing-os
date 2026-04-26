@@ -1,8 +1,8 @@
 import { ARTIFACTS_CONFIG } from './artifacts';
 
-export function buildPrompt(tipo: string, formData: any, clienteNome: string, contextoCliente: any) {
+export function buildPrompt(tipo: string, formData: Record<string, string | number>, clienteNome: string, contextoCliente: { tipo: string; form_data: Record<string, string | number> }[]) {
   const config = ARTIFACTS_CONFIG[tipo];
-  
+
   let baseContext = `Você é um Consultor Sênior operando o método Marketing OS.
 O Marketing OS visa transformar presenças digitais amadoras de PMEs em canais profissionais de captação (confiança, clareza, conversão).
 Estamos na Fase ${config.fase} com o cliente ${clienteNome}.
@@ -17,14 +17,14 @@ Mantenha um tom direto, focado em resultados comerciais, sem "enrolação" e evi
   for (const [key, value] of Object.entries(formData)) {
     baseContext += `- **${key.replace('_', ' ').toUpperCase()}**: ${value || 'N/A'}\n`;
   }
-  
+
   if (contextoCliente && contextoCliente.length > 0) {
     baseContext += `\nCONTEXTO DO CLIENTE (Artefatos anteriores):\n`;
-    contextoCliente.forEach((art: any) => {
+    contextoCliente.forEach((art) => {
       baseContext += `[${art.tipo}]: ${JSON.stringify(art.form_data)}\n`;
     });
   }
-  
+
   baseContext += `\nCom base nisso, escreva o artefato completo em Markdown, pronto para ser apresentado ao cliente. O título do documento deve ser o nome do artefato.`;
 
   return baseContext;

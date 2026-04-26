@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -25,7 +27,7 @@ export default function NovoCliente() {
       });
       const data = await res.json();
       router.push(`/clientes/${data.id}`);
-    } catch(err) {
+    } catch {
       alert("Erro ao criar cliente.");
       setLoading(false);
     }

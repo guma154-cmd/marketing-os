@@ -1,13 +1,17 @@
+"use client";
+
 import { ConfigArtefato } from '@/lib/types';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { HelpCircle } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface Props {
   config: ConfigArtefato;
-  formData: any;
-  setFormData: (data: any) => void;
+  formData: Record<string, string | number>;
+  setFormData: (data: Record<string, string | number>) => void;
 }
 
 export function FormularioArtefato({ config, formData, setFormData }: Props) {
@@ -19,9 +23,26 @@ export function FormularioArtefato({ config, formData, setFormData }: Props) {
     <div className="space-y-6">
       {config.campos.map(campo => (
         <div key={campo.nome} className="space-y-2">
-          <Label htmlFor={campo.nome} className="text-zinc-300">
-            {campo.label} {campo.obrigatorio && <span className="text-red-500">*</span>}
-          </Label>
+          <div className="flex items-center gap-2">
+            <Label htmlFor={campo.nome} className="text-zinc-300">
+              {campo.label} {campo.obrigatorio && <span className="text-red-500">*</span>}
+            </Label>
+            
+            {campo.ajuda && (
+              <Popover>
+                <PopoverTrigger>
+                  <HelpCircle 
+                    size={14} 
+                    className="text-zinc-500 cursor-pointer hover:text-amber-500 transition-colors" 
+                    aria-label={`Ajuda para ${campo.label}`}
+                  />
+                </PopoverTrigger>
+                <PopoverContent className="bg-zinc-900 border-zinc-800 text-xs text-zinc-300 max-w-[250px] shadow-xl">
+                  {campo.ajuda}
+                </PopoverContent>
+              </Popover>
+            )}
+          </div>
           
           {campo.tipo === 'text' && (
             <Input 
@@ -45,8 +66,8 @@ export function FormularioArtefato({ config, formData, setFormData }: Props) {
 
           {campo.tipo === 'select' && campo.opcoes && (
             <Select 
-              value={formData[campo.nome] || ''} 
-              onValueChange={v => handleChange(campo.nome, v)}
+              value={String(formData[campo.nome] || '')} 
+              onValueChange={v => handleChange(campo.nome, v || '')}
             >
               <SelectTrigger className="bg-zinc-950 border-zinc-800">
                 <SelectValue placeholder="Selecione..." />

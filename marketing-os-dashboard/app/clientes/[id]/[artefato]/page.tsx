@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { ARTIFACTS_CONFIG } from '@/lib/artifacts';
+
+export const dynamic = 'force-dynamic';
 import { FormularioArtefato } from '@/components/FormularioArtefato';
 import { OutputPanel } from '@/components/OutputPanel';
 import Link from 'next/link';
@@ -12,8 +14,8 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
   const config = ARTIFACTS_CONFIG[params.artefato];
   const router = useRouter();
 
-  const [cliente, setCliente] = useState<any>(null);
-  const [formData, setFormData] = useState<any>({});
+  const [cliente, setCliente] = useState<{ id: string; nome: string } | null>(null);
+  const [formData, setFormData] = useState<Record<string, string | number>>({});
   const [conteudo, setConteudo] = useState('');
   const [status, setStatus] = useState('pendente');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -56,6 +58,7 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
   };
 
   const handleGenerate = async () => {
+    if (!cliente) return;
     setIsGenerating(true);
     setConteudo('');
     setStatus('gerado');
@@ -95,7 +98,9 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
                   fullText += parsed.delta.text;
                   setConteudo(fullText);
                 }
-              } catch(e) {}
+              } catch {
+                // Silently ignore malformed chunks
+              }
             }
           }
         }
@@ -123,7 +128,7 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
   };
 
   if (!config) return <div>Artefato inválido.</div>;
-  if (loading) return <div className="p-8 text-zinc-500">Carregando...</div>;
+  if (loading || !cliente) return <div className="p-8 text-zinc-500">Carregando...</div>;
 
   return (
     <div className="h-[100vh] flex flex-col">

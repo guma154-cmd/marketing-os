@@ -29,6 +29,7 @@ export interface CampoArtefato {
   opcoes?: string[];
   placeholder?: string;
   obrigatorio?: boolean;
+  ajuda?: string;
 }
 
 export interface ConfigArtefato {

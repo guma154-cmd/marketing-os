@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { Cliente } from '@/lib/types';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
