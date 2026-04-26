@@ -2,7 +2,6 @@ import { db } from '@/lib/db';
 import { ClienteCard } from '@/components/ClienteCard';
 import { Cliente } from '@/lib/types';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -19,7 +18,7 @@ export default async function Home() {
           <p className="text-zinc-400 mt-1">Gerencie a evolução dos seus clientes Marketing OS.</p>
         </div>
         <Link href="/clientes/novo">
-          <Button className="bg-amber-600 hover:bg-amber-700 text-white">Novo Cliente</Button>
+          <button className="px-4 py-2 rounded-md bg-amber-600 hover:bg-amber-700 text-white font-medium transition-colors">Novo Cliente</button>
         </Link>
       </div>
 
@@ -31,9 +30,9 @@ export default async function Home() {
           <div className="col-span-full py-16 text-center text-zinc-500 border border-dashed border-zinc-800 rounded-xl bg-zinc-950/50">
             <p className="mb-4">Nenhum cliente cadastrado ainda.</p>
             <Link href="/clientes/novo">
-              <Button variant="outline" className="border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-white">
+              <button className="px-4 py-2 border border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-white rounded-md transition-all font-medium">
                 Adicionar Primeiro Cliente
-              </Button>
+              </button>
             </Link>
           </div>
         )}

@@ -4,7 +4,6 @@ import { FASES, canAdvancePhase } from '@/lib/phases';
 import { Cliente, Artefato } from '@/lib/types';
 import { ARTIFACTS_CONFIG } from '@/lib/artifacts';
 import { ArtifactCard } from './ArtifactCard';
-import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { Lock } from 'lucide-react';
 
@@ -51,14 +50,13 @@ export function PhaseTimeline({ cliente, artefatos }: Props) {
               </div>
               
               {isActive && (
-                <Button 
+                <button 
                   onClick={handleAdvance} 
                   disabled={!canAdvancePhase(fase.numero, aprovados, cliente.bloqueio_midia)}
-                  variant="outline"
-                  className="border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-zinc-950 bg-amber-500/10"
+                  className="px-4 py-2 border border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-zinc-950 bg-amber-500/10 rounded-md transition-all font-medium disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   Avançar para Fase {fase.numero + 1}
-                </Button>
+                </button>
               )}
             </div>
 

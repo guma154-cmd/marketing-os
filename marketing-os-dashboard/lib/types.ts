@@ -32,12 +32,19 @@ export interface CampoArtefato {
   ajuda?: string;
 }
 
+export interface HelpInfo {
+  descricao: string;
+  exemplosDeUso: string[];
+  oQueAIGera: string[];
+}
+
 export interface ConfigArtefato {
   tipo: string;
   titulo: string;
   descricao: string;
   fase: number;
   campos: CampoArtefato[];
+  help?: HelpInfo;
 }
 
 export interface Fase {

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { ARTIFACTS_CONFIG } from '@/lib/artifacts';
 
-export const dynamic = 'force-dynamic';
 import { FormularioArtefato } from '@/components/FormularioArtefato';
 import { OutputPanel } from '@/components/OutputPanel';
 import Link from 'next/link';

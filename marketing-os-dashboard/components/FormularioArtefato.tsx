@@ -1,12 +1,7 @@
 "use client";
 
 import { ConfigArtefato } from '@/lib/types';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
 import { HelpCircle } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface Props {
   config: ConfigArtefato;
@@ -24,60 +19,54 @@ export function FormularioArtefato({ config, formData, setFormData }: Props) {
       {config.campos.map(campo => (
         <div key={campo.nome} className="space-y-2">
           <div className="flex items-center gap-2">
-            <Label htmlFor={campo.nome} className="text-zinc-300">
+            <label htmlFor={campo.nome} className="text-sm font-medium text-zinc-300">
               {campo.label} {campo.obrigatorio && <span className="text-red-500">*</span>}
-            </Label>
+            </label>
             
             {campo.ajuda && (
-              <Popover>
-                <PopoverTrigger>
-                  <HelpCircle 
-                    size={14} 
-                    className="text-zinc-500 cursor-pointer hover:text-amber-500 transition-colors" 
-                    aria-label={`Ajuda para ${campo.label}`}
-                  />
-                </PopoverTrigger>
-                <PopoverContent className="bg-zinc-900 border-zinc-800 text-xs text-zinc-300 max-w-[250px] shadow-xl">
-                  {campo.ajuda}
-                </PopoverContent>
-              </Popover>
+               <span 
+                 title={campo.ajuda} 
+                 className="text-zinc-500 cursor-help hover:text-amber-500 transition-colors"
+                 aria-label={`Ajuda para ${campo.label}`}
+               >
+                  <HelpCircle size={14} />
+               </span>
             )}
           </div>
           
           {campo.tipo === 'text' && (
-            <Input 
+            <input 
               id={campo.nome}
-              placeholder={campo.placeholder}
+              type="text"
+              placeholder={campo.placeholder || ''}
               value={formData[campo.nome] || ''}
               onChange={e => handleChange(campo.nome, e.target.value)}
-              className="bg-zinc-950 border-zinc-800"
+              className="w-full rounded-md bg-zinc-950 border border-zinc-800 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
             />
           )}
           
           {campo.tipo === 'textarea' && (
-            <Textarea 
+            <textarea 
               id={campo.nome}
-              placeholder={campo.placeholder}
+              placeholder={campo.placeholder || ''}
               value={formData[campo.nome] || ''}
               onChange={e => handleChange(campo.nome, e.target.value)}
-              className="bg-zinc-950 border-zinc-800 min-h-[100px]"
+              className="w-full rounded-md bg-zinc-950 border border-zinc-800 px-3 py-2 text-sm text-zinc-100 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
             />
           )}
 
           {campo.tipo === 'select' && campo.opcoes && (
-            <Select 
+            <select 
+              id={campo.nome}
               value={String(formData[campo.nome] || '')} 
-              onValueChange={v => handleChange(campo.nome, v || '')}
+              onChange={e => handleChange(campo.nome, e.target.value)}
+              className="w-full rounded-md bg-zinc-950 border border-zinc-800 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all appearance-none"
             >
-              <SelectTrigger className="bg-zinc-950 border-zinc-800">
-                <SelectValue placeholder="Selecione..." />
-              </SelectTrigger>
-              <SelectContent className="bg-zinc-900 border-zinc-800">
-                {campo.opcoes.map(op => (
-                  <SelectItem key={op} value={op} className="hover:bg-zinc-800 focus:bg-zinc-800">{op}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <option value="" disabled>Selecione...</option>
+              {campo.opcoes.map(op => (
+                <option key={op} value={op} className="bg-zinc-900 text-zinc-100">{op}</option>
+              ))}
+            </select>
           )}
         </div>
       ))}
