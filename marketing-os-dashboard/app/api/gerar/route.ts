@@ -1,11 +1,12 @@
 import Groq from 'groq-sdk';
-import { buildPrompt } from '@/lib/prompts';
+import { buildPromptComMetricas } from '@/lib/prompts';
 import { db } from '@/lib/db';
 import { randomUUID } from 'crypto';
 
 export const runtime = 'nodejs';
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
 export async function POST(req: Request) {
   try {
     const { tipoArtefato, formData, clienteNome, clienteId } = await req.json();
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
     const contextoBruto = stmt.all(clienteId) as { tipo: string; form_data: string }[];
     const contextoCliente = contextoBruto.map(a => ({ tipo: a.tipo, form_data: JSON.parse(a.form_data || '{}') }));
 
-    const prompt = buildPrompt(tipoArtefato, formData, clienteNome, contextoCliente);
+    const prompt = await buildPromptComMetricas(tipoArtefato, formData, clienteNome, clienteId, contextoCliente, db);
 
     // Salva historico
     try {

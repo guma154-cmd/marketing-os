@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "Interface operacional para o método Marketing OS",
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: {

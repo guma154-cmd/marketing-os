@@ -21,36 +21,112 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'acessos_garantidos', 
-        label: 'Acessos Garantidos', 
-        tipo: 'textarea', 
-        placeholder: 'Meta Business Suite, Instagram (@nomedocliente), Google Meu Negócio, WhatsApp Business', 
-        ajuda: 'Precisamos de: Admin da Fanpage, Acesso ao Gerenciador de Negócios (BM) e Senha do Instagram.' 
+      {
+        nome: 'nome_empresa',
+        label: 'Nome da Empresa',
+        tipo: 'text',
+        obrigatorio: true,
+        placeholder: 'Ex: Noctua Segurança Eletrônica'
       },
-      { 
-        nome: 'canal_comunicacao', 
-        label: 'Canal de Comunicação', 
-        tipo: 'text', 
-        placeholder: 'WhatsApp para urgências, Trello para tarefas, reunião semanal às terças 10h' 
+      {
+        nome: 'segmento',
+        label: 'Segmento de Negócio',
+        tipo: 'text',
+        obrigatorio: true,
+        placeholder: 'Ex: Segurança eletrônica para condomínios residenciais'
       },
-      { 
-        nome: 'frequencia_report', 
-        label: 'Frequência de Report', 
-        tipo: 'select', 
-        opcoes: ['Semanal', 'Quinzenal', 'Mensal'] 
+      {
+        nome: 'cidade',
+        label: 'Cidade / Região de Atuação',
+        tipo: 'text',
+        placeholder: 'Ex: São Paulo, Zona Sul'
       },
-      { 
-        nome: 'entregaveis', 
-        label: 'O que entregamos nesta fase', 
+      {
+        nome: 'responsavel',
+        label: 'Responsável pelo Contato',
+        tipo: 'text',
+        placeholder: 'Ex: João Silva — Sócio'
+      },
+      {
+        nome: 'objetivo_principal',
+        label: 'Objetivo Principal',
         tipo: 'textarea',
-        placeholder: 'Diagnóstico completo da presença digital, definição de posicionamento, calendário editorial da semana 1, bio otimizada para conversão'
+        obrigatorio: true,
+        placeholder: 'Ex: Aparecer mais no Instagram e atrair 5 novos condomínios por mês',
+        ajuda: 'Pergunte ao cliente: O que você quer alcançar com o marketing nos próximos 90 dias?'
       },
-      { 
-        nome: 'nao_entregaveis', 
-        label: 'O que NÃO entregamos', 
+      {
+        nome: 'maior_desafio',
+        label: 'Maior Desafio Atual',
         tipo: 'textarea',
-        placeholder: 'Resultados de anúncios pagos (ainda não iniciamos mídia), aumento de seguidores garantido, design de identidade visual completa'
+        placeholder: 'Ex: Não tenho tempo para postar e não sei o que funciona para o meu público',
+        ajuda: 'Pergunte ao cliente: Qual é o maior obstáculo de marketing que você enfrenta hoje?'
+      },
+      {
+        nome: 'orcamento',
+        label: 'Orçamento Mensal Disponível',
+        tipo: 'text',
+        placeholder: 'Ex: R$ 2.000,00/mês',
+        ajuda: 'Pergunte ao cliente: Qual é o investimento mensal disponível para marketing?'
+      },
+      {
+        nome: 'historico_marketing',
+        label: 'Histórico de Marketing Anterior',
+        tipo: 'textarea',
+        placeholder: 'Ex: Teve agência por 6 meses, não via resultado, não entendia os relatórios',
+        ajuda: 'Pergunte ao cliente: Já tentou alguma ação de marketing antes? O que funcionou e o que não funcionou?'
+      },
+      {
+        nome: 'check_meta_admin',
+        label: 'Cliente adicionou consultor como Admin no Meta Business Suite',
+        tipo: 'checkbox',
+        secao: 'consultor'
+      },
+      {
+        nome: 'check_instagram_profissional',
+        label: 'Instagram convertido para conta Profissional (Business ou Creator)',
+        tipo: 'checkbox',
+        secao: 'consultor'
+      },
+      {
+        nome: 'check_gmb_gerente',
+        label: 'Cliente adicionou consultor como Gerente no Google Meu Negócio',
+        tipo: 'checkbox',
+        secao: 'consultor'
+      },
+      {
+        nome: 'check_gmb_verificado',
+        label: 'Google Meu Negócio verificado (pin recebido)',
+        tipo: 'checkbox',
+        secao: 'consultor'
+      },
+      {
+        nome: 'check_whatsapp_business',
+        label: 'WhatsApp Business App configurado',
+        tipo: 'checkbox',
+        secao: 'consultor'
+      },
+      {
+        nome: 'canal_comunicacao',
+        label: 'Canal de Comunicação',
+        tipo: 'text',
+        placeholder: 'Ex: WhatsApp para urgências, Trello para tarefas, reunião quinzenal às terças 10h',
+        secao: 'consultor'
+      },
+      {
+        nome: 'frequencia_report',
+        label: 'Frequência de Report',
+        tipo: 'select',
+        opcoes: ['Semanal', 'Quinzenal', 'Mensal'],
+        secao: 'consultor'
+      },
+      {
+        nome: 'acessos_garantidos',
+        label: 'Acessos Recebidos',
+        tipo: 'textarea',
+        placeholder: 'Ex: Meta Business Suite ✅, Instagram ✅, Google Meu Negócio ⏳',
+        ajuda: 'Registre quais acessos já foram concedidos e quais ainda estão pendentes.',
+        secao: 'consultor'
       }
     ]
   },
@@ -111,6 +187,31 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
         label: 'Objetivo Principal (30 dias)', 
         tipo: 'textarea',
         placeholder: 'Aumentar o número de orçamentos qualificados vindos do Google em 20%'
+      },
+      {
+        nome: 'concorrentes',
+        label: 'Principais Concorrentes',
+        tipo: 'text',
+        placeholder: 'Ex: Prosegur, G4S, empresas locais sem app próprio'
+      },
+      {
+        nome: 'tom_comunicacao',
+        label: 'Tom de Comunicação',
+        tipo: 'select',
+        opcoes: [
+          'Profissional e técnico',
+          'Descontraído e próximo',
+          'Premium e aspiracional',
+          'Autoritário e direto',
+          'Emocional e humano'
+        ],
+        ajuda: 'Como a marca deve "soar"? Profissional (Segurança/Saúde), Próximo (Varejo/Comida), Premium (Luxo), Autoritário (Liderança/Educação).'
+      },
+      {
+        nome: 'redes_ativas',
+        label: 'Redes Sociais Onde Já Está Presente',
+        tipo: 'text',
+        placeholder: 'Ex: Instagram (3.200 seguidores), Google Meu Negócio, WhatsApp Business'
       }
     ]
   },
@@ -192,12 +293,6 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
         tipo: 'select', 
         opcoes: ['NÃO', 'SIM'], 
         ajuda: 'Selecione SIM se o perfil for amador: bio confusa, sem link de WhatsApp, sem depoimentos ou se o último post tiver mais de 15 dias.' 
-      },
-      { 
-        nome: 'produto_recomendado', 
-        label: 'Produto Recomendado', 
-        tipo: 'select', 
-        opcoes: ['Presença Essencial', 'Presença + Captação', 'Growth Local'] 
       }
     ]
   },
@@ -221,15 +316,17 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
       ]
     },
     campos: [
-      { 
-        nome: 'dores_identificadas', 
-        label: 'Dores Identificadas', 
-        tipo: 'textarea',
-        placeholder: 'Baixa conversão no Instagram, falta de autoridade visual, ausência de funil de vendas'
+      {
+        nome: 'produto_recomendado',
+        label: 'Pacote / Produto Recomendado',
+        tipo: 'select',
+        obrigatorio: true,
+        opcoes: ['Presença Essencial', 'Presença + Captação', 'Growth Local'],
+        ajuda: 'Presença Essencial = base comprometida (bloqueio ativo). Presença + Captação = base razoável sem conversão. Growth Local = base sólida, foco em escala.'
       },
       { 
-        nome: 'produto_recomendado', 
-        label: 'Nome do Pacote/Produto', 
+        nome: 'produto_recomendado_nome', 
+        label: 'Nome Personalizado do Pacote/Produto', 
         tipo: 'text',
         placeholder: 'Marketing OS - Presença + Captação'
       },
@@ -283,6 +380,24 @@ export const ARTIFACTS_CONFIG: Record<string, ConfigArtefato> = {
         label: 'Responsabilidades do Cliente', 
         tipo: 'textarea',
         placeholder: 'Aprovar posts em até 24h, enviar fotos de novos produtos toda segunda, manter saldo no cartão do Meta Ads'
+      },
+      {
+        nome: 'prazo_contrato',
+        label: 'Prazo do Contrato',
+        tipo: 'select',
+        opcoes: ['1 mês', '3 meses', '6 meses', '12 meses']
+      },
+      {
+        nome: 'forma_pagamento',
+        label: 'Forma de Pagamento',
+        tipo: 'text',
+        placeholder: 'Ex: PIX até o dia 5 de cada mês'
+      },
+      {
+        nome: 'condicao_cancelamento',
+        label: 'Condição de Cancelamento',
+        tipo: 'textarea',
+        placeholder: 'Ex: Aviso com 15 dias de antecedência, sem multa após 3 meses de contrato'
       }
     ]
   },

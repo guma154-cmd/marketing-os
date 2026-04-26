@@ -14,7 +14,7 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
   const router = useRouter();
 
   const [cliente, setCliente] = useState<{ id: string; nome: string } | null>(null);
-  const [formData, setFormData] = useState<Record<string, string | number>>({});
+  const [formData, setFormData] = useState<Record<string, string | number | boolean | null | undefined>>({});
   const [conteudo, setConteudo] = useState('');
   const [status, setStatus] = useState('pendente');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -86,7 +86,7 @@ export default function ArtefatoPage({ params }: { params: { id: string, artefat
         if (done) break;
         const chunk = decoder.decode(value, { stream: true });
         
-        const lines = chunk.split('\\n');
+        const lines = chunk.split('\n');
         for (const line of lines) {
           if (line.startsWith('data:')) {
             const data = line.replace('data: ', '').trim();

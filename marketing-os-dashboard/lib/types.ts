@@ -25,11 +25,12 @@ export interface Artefato {
 export interface CampoArtefato {
   nome: string;
   label: string;
-  tipo: 'text' | 'textarea' | 'select' | 'radio';
+  tipo: 'text' | 'textarea' | 'select' | 'radio' | 'checkbox';
   opcoes?: string[];
   placeholder?: string;
   obrigatorio?: boolean;
   ajuda?: string;
+  secao?: 'consultor';
 }
 
 export interface HelpInfo {
