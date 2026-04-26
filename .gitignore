@@ -29,3 +29,9 @@ Thumbs.db
 *.db-shm
 *.db-wal
 marketing-os-dashboard/data/
+
+# Dashboard
+dashboard/node_modules/
+dashboard/.next/
+dashboard/marketing-os.db
+dashboard/.env.local
