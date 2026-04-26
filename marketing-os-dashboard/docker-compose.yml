@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  marketing-os-app:
+    build: .
+    container_name: marketing-os-dashboard
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DATABASE_URL=/app/data/marketing-os.db
+    volumes:
+      - marketing_os_data:/app/data
+
+volumes:
+  marketing_os_data:

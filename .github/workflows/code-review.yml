@@ -1,0 +1,79 @@
+name: Marketing OS - Auto-Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'marketing-os-dashboard/**'
+
+jobs:
+  review:
+    name: Quinn AI Review (@qa)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR Diff
+        id: get_diff
+        run: |
+          git diff origin/${{ github.base_ref }}...origin/${{ github.head_ref }} > pr_diff.txt
+
+      - name: Quinn AI Code Review
+        uses: actions/github-script@v7
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        with:
+          script: |
+            const fs = require('fs');
+            const diff = fs.readFileSync('pr_diff.txt', 'utf8');
+            if (diff.length === 0) return;
+
+            const prompt = `Você é o Agente @qa (Quinn), um Arquiteto de Testes e Especialista em Qualidade.
+            Sua missão é revisar o diff de um Pull Request para o projeto Marketing OS Dashboard.
+            
+            DIRETRIZES DE REVISÃO:
+            1. Busque por bugs lógicos, erros de TypeScript ou falhas de segurança.
+            2. Verifique se o código respeita o método Marketing OS (ex: regras de bloqueio de mídia).
+            3. Analise a qualidade do componente React (Next.js 14, Server Components).
+            4. Seja pragmático: Diferencie o que é CRÍTICO do que é uma sugestão de melhoria.
+            5. Use um tom profissional, direto e educativo.
+            6. Responda em Português do Brasil.
+
+            DIFF DO PULL REQUEST:
+            ${diff.substring(0, 15000)}
+            
+            Forneça seu feedback estruturado em:
+            - **Resumo da Análise**
+            - **Pontos Críticos (Must-fix)**
+            - **Sugestões de Melhoria (Nice-to-have)**
+            - **Veredito (PASS / CONCERNS / FAIL)**`;
+
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                model: 'llama-3.1-70b-versatile',
+                messages: [{ role: 'user', content: prompt }],
+                temperature: 0.2
+              })
+            });
+
+            const data = await response.json();
+            const reviewText = data.choices[0].message.content;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `### 🤖 Quinn AI Code Review (@qa)\n\n${reviewText}`
+            });

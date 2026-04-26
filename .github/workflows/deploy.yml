@@ -1,0 +1,50 @@
+name: Marketing OS - CD (Deploy to Server)
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    name: Deploy to Ubuntu Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Copy files to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: "100.0.4.90"
+          username: "telematica"
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "marketing-os-dashboard/*"
+          target: "~/marketing-os"
+          strip_components: 1
+
+      - name: Deploy with Docker Compose
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: "100.0.4.90"
+          username: "telematica"
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/marketing-os
+            echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" > .env
+            docker compose down
+            docker compose up --build -d
+            
+            echo "Aguardando inicialização (15s)..."
+            sleep 15
+            
+            # Health Check
+            if curl -s -f http://localhost:3000 > /dev/null; then
+              echo "✅ Deploy bem-sucedido! Aplicação está online."
+            else
+              echo "❌ Erro: Aplicação não respondeu na porta 3000."
+              docker compose logs --tail=50
+              exit 1
+            fi
+            
+            docker image prune -f

@@ -1,0 +1,43 @@
+name: Marketing OS - CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: marketing-os-dashboard
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/checkout@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: marketing-os-dashboard/package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Validate Database Schema (Seed Test)
+        run: npm run db:seed
+
+      - name: Build Next.js Application
+        run: npm run build
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          NEXT_TELEMETRY_DISABLED: 1
+          DATABASE_URL: ./marketing-os.db
