@@ -23,4 +23,9 @@ Thumbs.db
 .claude/settings.local.json
 .aiox/install-log.txt
 *.tmp
-*.bundle
+# Database & Data
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+marketing-os-dashboard/data/
