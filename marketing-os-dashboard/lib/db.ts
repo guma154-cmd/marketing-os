@@ -3,8 +3,8 @@ import path from 'path';
 
 /**
  * DATABASE CONFIGURATION - Marketing OS Dashboard
- * O banco de dados SQLite é persistido em um volume Docker (/app/data) 
- * para garantir que os dados dos clientes não sejam perdidos entre deploys.
+ * Estratégia: Self-Hosted Runner (Deploy Local em 100.0.4.90)
+ * O banco de dados SQLite é persistido em um volume Docker (/app/data).
  */
 const dbPath = process.env.DATABASE_URL || path.join(process.cwd(), 'marketing-os.db');
 export const db = new Database(dbPath);
